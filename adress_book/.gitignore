@@ -1,0 +1,15 @@
+# IDE
+.vscode
+
+# virtual env
+adress_book/.env
+bin
+include
+lib
+share
+
+# collectstatic files
+/static/admin
+
+# migration files
+/**/migrations/*.py
