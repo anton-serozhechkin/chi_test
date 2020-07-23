@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-
+from .views import *
 urlpatterns = [
-    #path('', views.home, name='home')
+    path('', AcmeBookList.as_view(), name='home')
 ]

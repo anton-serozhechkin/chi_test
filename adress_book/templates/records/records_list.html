@@ -1,0 +1,99 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="https://use.fontawesome.com/44959e12e1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="table">
+        <div class="header">
+            <form action="" method="post" id="add">
+                <input type="text" placeholder="Имя Фамилия">
+                <input type="text" placeholder="Телефон">
+                <input type="text" placeholder="Адрес">
+                <input type="file" placeholder="">
+                <button>Добавить</button>
+            </form>
+            <div class="search">
+                <form action="" method="post" id="search">
+                    <input type="search" placeholder="Поиск по сайту..">
+                    <button>
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% if record_list %}
+        <div class="head">
+            <div class="row">
+                <div class="col">
+                    Имя Фамилия
+                </div>
+                <div class="col">
+                    Телефонный номер
+                </div>
+                <div class="col">
+                    Страна
+                </div>
+                <div class="col">
+                    Подробная информация
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            {% for record in record_list %}
+                <div class="row">
+                    <div class="col">
+                        {{ record.name }} {{ record.last_name }}
+                    </div>
+                    <div class="col">
+                        {{ record.phone_number }}
+                    </div>
+                    <div class="col">
+                        {% if record.country %}
+                            {{ record.country }}
+                        {% else %}
+                            Неизвестно
+                        {% endif %}
+                        </div>
+                    <div class="col">
+                        <a href="">
+                            Подробнее...
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="nothing-found">
+            <div class="title">
+                Ничего не найдено
+            </div>
+        </div>
+        {% endif %}
+            <!--<div class="nothing-found">
+                <div class="title">
+                    Ничего не найдено
+                </div>
+                <div class="subtitle">
+                    Попробуйте по-другому..
+                </div>
+                <div class="search">
+                    <form action="" method="post" id="search">
+                        <input type="search" placeholder="Поиск по сайту..">
+                        <button>
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>

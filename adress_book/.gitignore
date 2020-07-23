@@ -18,5 +18,3 @@ share
 # cache
 /**/__pycache__/
 /**/**/*.pyc
-
-# idk why ignore doecnt see cache and migrations
