@@ -3,6 +3,7 @@
 
 # virtual env
 adress_book/.env
+.bash_profile.save
 bin
 include
 lib
@@ -12,4 +13,10 @@ share
 /static/admin
 
 # migration files
-/**/migrations/*.py
+/**/migrations/
+
+# cache
+/**/__pycache__/
+/**/**/*.pyc
+
+# idk why ignore doecnt see cache and migrations
