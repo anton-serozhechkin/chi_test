@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="detail">
+        <div class="header">
+            <a href="{% url 'home' %}"><i class="fa fa-undo" aria-hidden="true"></i>
+                Вернутся назад
+            </a>
+        </div>
+        {% if request.user.is_superuser %}
+            <a href="{% url 'delete_record' record_id=data_record.id %}" class="edit">
+                Удалить запись
+            </a>
+        {% endif %}
+        <div class="content">
+            <div class="text">
+                <p>{{ data_record.name }} {{ data_record.last_name }}</p>
+                <p>{{ data_record.phone_number }}</p>
+
+                {% if data_record.country %}
+                    <p>{{ data_record.country }}</p>
+                {% endif %}
+                
+                {% if data_record.city %}
+                    <p>{{ data_record.city }}</p>
+                {% endif %}
+                
+                {% if data_record.street %}
+                    <p>{{ data_record.street }}</p>
+                {% endif %}
+                <a href="{% url 'change_record' record_id=data_record.id %}" class="edit">
+                    Редактировать
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

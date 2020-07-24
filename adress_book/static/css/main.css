@@ -136,13 +136,6 @@ body {
 .detail .header a i {
     margin-right: 6px;
 }
-.detail .content .image {
-    flex: none;
-    width: 425px;
-}
-.detail .content .image img {
-    width: 425px;
-}
 .detail .content .text {
     flex: 1;
     display: flex;

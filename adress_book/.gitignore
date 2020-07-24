@@ -4,10 +4,6 @@
 # virtual env
 adress_book/.env
 .bash_profile.save
-bin
-include
-lib
-share
 
 # collectstatic files
 /static/admin

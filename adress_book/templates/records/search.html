@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="table">
+        <div class="header">
+            <a href="{% url 'home' %}"><i class="fa fa-undo" aria-hidden="true"></i>
+                Вернутся назад
+            </a>
+        </div>
+        {% if results %}
+            <div class="head">
+                <div class="row">
+                    <div class="col">
+                        Имя Фамилия
+                    </div>
+                    <div class="col">
+                        Телефонный номер
+                    </div>
+                    <div class="col">
+                        Страна
+                    </div>
+                    <div class="col">
+                        Подробная информация
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                {% for record in results %}
+                    <div class="row">
+                        <div class="col">
+                            {{ record.name }} {{ record.last_name }}
+                        </div>
+                        <div class="col">
+                            {{ record.phone_number }}
+                        </div>
+                        <div class="col">
+                            {% if record.country %}
+                                {{ record.country }}
+                            {% else %}
+                                Неизвестно
+                            {% endif %}
+                        </div>
+                        <div class="col">
+                            <a href="{% url 'record_detail' record_id=record.id %}">
+                                Подробнее...
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% elif empty_req %}
+            <div class="nothing-found">
+                <div class="title">
+                    {{ empty_req }}
+                </div>
+            </div>
+        {% else %}
+            <div class="nothing-found">
+                <div class="title">
+                    Ничего не найдено
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock content %}
