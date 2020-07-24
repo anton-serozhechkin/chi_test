@@ -5,8 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 class Record(models.Model):
-    name = models.CharField('Имя', max_length=100, unique=True)
-    last_name = models.CharField('Фамилия', max_length=100, unique=True)
+    name = models.CharField('Имя Фамилия', max_length=100, unique=True)
     country = CountryField('Страна', default='UA', blank=True, null=True)
     city = models.CharField('Город', max_length=100, blank=True, null=True)
     street = models.CharField('Улица', max_length=100, blank=True, null=True)
@@ -21,9 +20,9 @@ class Record(models.Model):
     
     def __str__(self):
         if self.country:
-            return 'Пользователь {} {} из {}.'.format(self.last_name, self.name, self.country.name)
+            return 'Пользователь {} из {}.'.format( self.name, self.country.name)
         else:
-            return 'Пользователь {} {}.'.format(self.last_name, self.name)
+            return 'Пользователь {} .'.format(self.name)
 
     def get_absolute_url(self):
         return reverse('record_detail', kwargs={'id': self.id})

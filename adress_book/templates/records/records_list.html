@@ -40,7 +40,7 @@
                 {% for record in record_list %}
                     <div class="row">
                         <div class="col">
-                            {{ record.name }} {{ record.last_name }}
+                            {{ record.name }}
                         </div>
                         <div class="col">
                             {{ record.phone_number }}
@@ -67,22 +67,6 @@
                 </div>
             </div>
         {% endif %}
-            <!--<div class="nothing-found">
-                <div class="title">
-                    Ничего не найдено
-                </div>
-                <div class="subtitle">
-                    Попробуйте по-другому..
-                </div>
-                <div class="search">
-                    <form action="" method="post" id="search">
-                        <input type="search" placeholder="Поиск по сайту..">
-                        <button>
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>-->
         </div>
     </div>
 {% endblock content %}

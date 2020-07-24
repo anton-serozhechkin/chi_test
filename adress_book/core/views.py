@@ -27,7 +27,6 @@ def search_results(request):
 
         results = Record.objects.filter(
             Q(name__icontains=query)|
-            Q(last_name__icontains=query)|
             Q(country__icontains=query)|
             Q(city__icontains=query)|
             Q(street__icontains=query)|
@@ -46,13 +45,7 @@ def change_record(request, record_id):
         if request.POST['name']:
             if request.POST['name'] != data_record.name:
                 data_record.name = request.POST['name']
-                data_record.save() 
-
-        if request.POST['last_name']:
-            if request.POST['last_name'] != data_record.last_name:
-                data_record.last_name = request.POST['last_name']
-                data_record.save() 
-                
+                data_record.save()                 
         
         if form.is_valid():
             data_record.country = request.POST['country']
