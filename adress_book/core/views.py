@@ -71,7 +71,7 @@ def change_record(request, record_id):
         if request.POST['country'] != data_record.country:
             data_record.country = request.POST['country']
             data_record.save()   
-        if request.FILES['image']:
+        if request.FILES.get('image', None):
             data_record.image = request.FILES['image']
             data_record.save()
         if request.POST['phone_number'] != data_record.phone_number:
