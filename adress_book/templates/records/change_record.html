@@ -8,32 +8,16 @@
         </div>
         <form action="{% url 'change_record' record_id=data_record.id %}" method="POST">
             {% csrf_token %}
-            <input name="name" value="{{ data_record.name }}">
-            {{ form.country }}
+            {{ main_form }}
+            {% comment %}<input name="name" value="{{ data_record.name }}">
+            
             <input name="city" value="{{ data_record.city }}">
             <input name="street" value="{{ data_record.street }}">
-            <input name="phone_number" value="{{ data_record.phone_number }}">
+            <input name='image' value="{{ data_record.image.url }}">
+            <input name="phone_number" value="{{ data_record.phone_number }}">{% endcomment %}
             <button class="edit" type="submit">
                 Изменить
             </button>
         </form>
-        <div class="content">
-            <div class="text">
-                <p>{{ data_record.name }}</p>
-                <p>{{ data_record.phone_number }}</p>
-
-                {% if data_record.country %}
-                    <p>{{ data_record.country }}</p>
-                {% endif %}
-                
-                {% if data_record.city %}
-                    <p>{{ data_record.city }}</p>
-                {% endif %}
-                
-                {% if data_record.street %}
-                    <p>{{ data_record.street }}</p>
-                {% endif %}
-            </div>
-        </div>
     </div>
     {% endblock content %}

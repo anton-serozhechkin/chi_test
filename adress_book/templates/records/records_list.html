@@ -2,13 +2,11 @@
 {% block content %}
     <div class="table">
         <div class="header">
-            {% if request.user.is_superuser %}
-                <form action="" method="post" id="add">
-                    {% csrf_token %}
-                    {{ form }}
-                    <button>Добавить</button>
-                </form>
-            {% endif %}
+            <form action="" method="post" id="add">
+                {% csrf_token %}
+                {{ form }}
+                <button>Добавить</button>
+            </form>
             <div class="search">
                 <form action="{% url 'search_results' %}" id="search">
                     {% csrf_token %}

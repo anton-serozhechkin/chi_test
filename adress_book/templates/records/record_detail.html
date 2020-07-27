@@ -6,16 +6,18 @@
                 Вернутся назад
             </a>
         </div>
-        {% if request.user.is_superuser %}
-            <a href="{% url 'delete_record' record_id=data_record.id %}" class="edit">
-                Удалить запись
-            </a>
-        {% endif %}
+        <a href="{% url 'delete_record' record_id=data_record.id %}" class="edit">
+            Удалить запись
+        </a>
         <div class="content">
             <div class="text">
                 <p>{{ data_record.name }}</p>
                 <p>{{ data_record.phone_number }}</p>
-
+                {% if data_record.image %}
+                <div class="image">
+                    <img src="{{ data_record.image.url }}" alt="">
+                </div>
+                {% endif %}
                 {% if data_record.country %}
                     <p>{{ data_record.country }}</p>
                 {% endif %}

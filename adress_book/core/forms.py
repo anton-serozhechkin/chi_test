@@ -3,16 +3,17 @@ from django import forms
 from .models import Record
 from django_countries.fields import CountryField
 
-class RecordFormChange(forms.Form):
-    country = CountryField().formfield()
+
 
 class RecordForm(ModelForm): 
+    country = CountryField().formfield(label='Страна')
     name = forms.CharField(label='Имя')
-    city = forms.CharField(label='Город')
-    street = forms.CharField(label='Улица')
+    city = forms.CharField(label='Город', required=False)
+    street = forms.CharField(label='Улица', required=False)
     phone_number = forms.CharField(label='Телефонный номер')
+    image = forms.ImageField(label='Фотография', required=False)
     class Meta:
         model = Record
-        fields = ['name', 
-                  'country', 'city', 'street',
-                  'phone_number']
+        fields = ['name', 'country',
+                  'city', 'street',
+                  'phone_number', 'image']

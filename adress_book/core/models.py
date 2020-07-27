@@ -9,6 +9,7 @@ class Record(models.Model):
     country = CountryField('Страна', default='UA', blank=True, null=True)
     city = models.CharField('Город', max_length=100, blank=True, null=True)
     street = models.CharField('Улица', max_length=100, blank=True, null=True)
+    image = models.ImageField('Фотография', upload_to='photos/%Y/%m/%h/', null=True, blank=True)
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Телефонный номер должен быть в формате: '+999999999'. Допускается до 15 цифр.")
     phone_number = models.CharField('Телефонный номер', validators=[phone_regex], max_length=17) # валидатор должен быть списком    URL (опциональное поле, с валидацией) 
     created = models.DateTimeField('Запись добавлена', default=timezone.now)
