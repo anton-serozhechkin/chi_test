@@ -4,7 +4,8 @@ from .models import *
 
 class RecordAdmin(admin.ModelAdmin):
     list_filter = ('is_active', )
-    search_fields = ('name', 'country__name', 'city', 'street', 'phone_number')
+    # search by countries work only by abbreviation
+    search_fields = ('name', 'city', 'street', 'country', 'phone_number')
     fieldsets = (
         ('Основная информация', {
             'fields':(

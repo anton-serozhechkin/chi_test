@@ -35,6 +35,7 @@ def search_results(request):
     """
     if request.GET.get('q'):
         query = request.GET.get('q')
+        # search by countries work only by abbreviation
 
         results = Record.objects.filter(
             Q(name__icontains=query)|
