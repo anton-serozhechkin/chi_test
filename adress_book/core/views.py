@@ -4,6 +4,11 @@ from .forms import RecordForm
 from django.db.models import Q
 
 def home(request):
+    """
+        :record_list - objects from db order by date created
+        :form - form for create new object
+        :request.FILES - for getting image from form 
+    """
     record_list = Record.objects.filter(is_active=True).order_by('-created')
     if request.method == 'POST':
         form = RecordForm(request.POST, request.FILES)
@@ -22,6 +27,12 @@ def delete_record(request, record_id):
     return redirect('home')
 
 def search_results(request):
+    """
+        : q - an object used to encapsulate a set of key arguments.
+        : query - var which get values from q
+        : results - results of search
+        : empty_req - var if q equal nothing
+    """
     if request.GET.get('q'):
         query = request.GET.get('q')
 
@@ -39,6 +50,11 @@ def search_results(request):
     return render(request, 'records/search.html', locals())
 
 def change_record(request, record_id):
+    """
+        : record_id - id of object
+        : data record - object from db by id
+        : main_form - form for change attrs of object
+    """
     data_record = get_object_or_404(Record, id=record_id)
     if request.method == "POST":
         main_form = RecordForm(request.POST, request.FILES)

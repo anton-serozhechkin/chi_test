@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 
 class Record(models.Model):
+    
     name = models.CharField('Имя Фамилия', max_length=100, unique=True)
     country = CountryField('Страна', default='UA', blank=True, null=True)
     city = models.CharField('Город', max_length=100, blank=True, null=True)
