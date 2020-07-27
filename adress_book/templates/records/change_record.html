@@ -6,15 +6,9 @@
                 Вернутся назад
             </a>
         </div>
-        <form action="{% url 'change_record' record_id=data_record.id %}" method="POST">
+        <form action="{% url 'change_record' record_id=data_record.id %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             {{ main_form }}
-            {% comment %}<input name="name" value="{{ data_record.name }}">
-            
-            <input name="city" value="{{ data_record.city }}">
-            <input name="street" value="{{ data_record.street }}">
-            <input name='image' value="{{ data_record.image.url }}">
-            <input name="phone_number" value="{{ data_record.phone_number }}">{% endcomment %}
             <button class="edit" type="submit">
                 Изменить
             </button>

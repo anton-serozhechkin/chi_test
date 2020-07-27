@@ -2,7 +2,7 @@
 {% block content %}
     <div class="table">
         <div class="header">
-            <form action="" method="post" id="add">
+            <form action="" enctype="multipart/form-data" method="post" id="add">
                 {% csrf_token %}
                 {{ form }}
                 <button>Добавить</button>

@@ -6,7 +6,7 @@ from django.db.models import Q
 def home(request):
     record_list = Record.objects.filter(is_active=True).order_by('-created')
     if request.method == 'POST':
-        form = RecordForm(request.POST)
+        form = RecordForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
     else:
@@ -41,7 +41,7 @@ def search_results(request):
 def change_record(request, record_id):
     data_record = get_object_or_404(Record, id=record_id)
     if request.method == "POST":
-        main_form = RecordForm(request.POST)
+        main_form = RecordForm(request.POST, request.FILES)
         if request.POST['name'] != data_record.name:
             data_record.name = request.POST['name']
             data_record.save()
@@ -54,8 +54,8 @@ def change_record(request, record_id):
         if request.POST['country'] != data_record.country:
             data_record.country = request.POST['country']
             data_record.save()   
-        if request.POST['image']:
-            data_record.image = request.POST['image']
+        if request.FILES['image']:
+            data_record.image = request.FILES['image']
             data_record.save()
         if request.POST['phone_number'] != data_record.phone_number:
             data_record.phone_number = request.POST['phone_number']
